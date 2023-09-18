@@ -1,11 +1,9 @@
 import List from './List';
 import React from 'react';
 import useSWR from 'swr';
-import axios from 'axios';
 
-const fetcher = (url) => axios.get(url).then((res) => res.data)
 
-function Data({ url }) {
+function Data({ url, fetcher }) {
   const { data, error } = useSWR(url, fetcher)
 
   if (error) {
