@@ -3,8 +3,8 @@ import React from 'react';
 import useSWR from 'swr';
 
 
-function Data({ url, fetcher }) {
-  const { data, error } = useSWR(url, fetcher)
+function Data() {
+  const { data, error } = useSWR('https://jsonplaceholder.typicode.com/users')
 
   if (error) {
     return <div>Error: {error.message}</div>
@@ -17,4 +17,4 @@ function Data({ url, fetcher }) {
   return <List users={data} />
 }
 
-export default Data
+export default Data 
