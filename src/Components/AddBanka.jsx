@@ -4,7 +4,7 @@ function AddBanka() {
     const [banks, setBanks] = useState([])
 
     useEffect(() => {
-        const savedBnaks = JSON.parse(localStorage.getItem('banks'))
+        const savedBnaks = JSON.parse(localStorage.getItem('banks')) || []
         setBanks(savedBnaks)
     },[])
 
@@ -14,7 +14,7 @@ function AddBanka() {
 
             const newBank = {
                 banka: bankId,
-                date: Date.now(),
+                
             }
 
             setBanks(prevBanks => [...prevBanks, newBank])
