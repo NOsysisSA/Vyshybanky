@@ -13,7 +13,8 @@ function AddBanka() {
             const bankId = bankURL.replace('https://send.monobank.ua/jar/','')
 
             const newBank = {
-                banka: bankId
+                banka: bankId,
+                date: Date.now(),
             }
 
             setBanks(prevBanks => [...prevBanks, newBank])
