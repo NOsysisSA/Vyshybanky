@@ -3,47 +3,14 @@ function AddBanka() {
     const [bankURL, setBankURL] = useState('')
     const [banks, setBanks] = useState([])
     
-    async function fetchData(clientId) {
-        const apiUrl = 'https://send.monobank.ua/api/handler';
-        const requestBody = {
-          clientId: clientId,
-          c: 'hello',
-          Pc: 'BL/p65E8LZI5OaAMILxWGISmg/NXNxxnFTq019kCLHECheorK7vOXeqAUO0jJBnCr4XaRY60eYsmMhsIxCMxk5k='
-        }
-      
-        try {
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-          })
-      
-          if (response.ok) {
-            const data = await response.json();
-            return data
-          } else {
-            throw new Error('Не удалось выполнить запрос к серверу')
-          }
-        } catch (error) {
-          console.error('Ошибка при выполнении запроса:', error)
-          return null
-        }
-      }
-      
-      const clientId = '4CLy9vEFBM' 
-      fetchData(clientId)
-        .then((result) => {
-          if (result) {
-            console.log('Данные получены', result);
-          } else {
-            console.log('Не удалось получить данные');
-          }
-        })
-        .catch((error) => {
-          console.error('Произошла ошибка', error);
-        });
+    // async function fetchData(clientId){
+    //     const apiURL = 'https://send.monobank.ua/api/handler'
+    //     const request = {
+    //         clientId: clientId,
+    //         c:'hello',
+    //         Pc: 'BL/p65E8LZI5OaAMILxWGISmg/NXNxxnFTq019kCLHECheorK7vOXeqAUO0jJBnCr4XaRY60eYsmMhsIxCMxk5k=',
+    //     }
+    // }
     
 
     useEffect(() => {
@@ -83,3 +50,6 @@ function AddBanka() {
 }
 
 export default AddBanka
+
+
+  

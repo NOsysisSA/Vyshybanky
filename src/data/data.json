@@ -1,0 +1,27 @@
+{
+    "clientType": "jar",
+    "Ps": "BCuafUktZZPRIQ1JFuPs6OUy0aXJY4/D7YFK71/wD4Xf0L5zFHoy7+6ueg8klRnC1jsnR5W8rlRTcpN2c3HZuwc=",
+    "name": "На Мавік3е і бендеру",
+    "avatar": "https://ava-img.monobank.com.ua/NqJAEHONJZ4lEaerJztWuwzYmo1fjiPFkOlNMToyt0o=.jpg",
+    "currency": "980",
+    "description": "Збір на Mavic 3 interprize і Bandera Power для підрозділу аєророзвідки 110 ОМБР",
+    "jarGoal": 15000000,
+    "jarAmount": 7470155,
+    "extJarId": "FruVcevVLALYevhyj1dXJ6SqrS49LuD",
+    "ownerName": "Михайло Т.",
+    "jarStatus": "CLOSED",
+    "refererLink": "https://f6mq8.app.goo.gl/kFBQu",
+    "caption": "",
+    "config": {
+     "minAmount": 1000,
+     "maxAmount": 2999900
+    },
+    "googleApplePay": true,
+    "rate": {
+     "eur": {
+      "buy": 39.03,
+      "sale": 40.3502
+     }
+    },
+    "feeForeignCard": 2
+   }
