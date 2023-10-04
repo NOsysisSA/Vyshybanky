@@ -1,11 +1,20 @@
 import "./card.css";
 import useSWR from "swr";
 
-const fetchData = async (url) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
 }
+
 
 function Card({ id }) {
   const apiUrl = `https://jar-5pt4zcwc3a-ey.a.run.app/?jar=${id}`
