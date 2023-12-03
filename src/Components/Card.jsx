@@ -19,6 +19,7 @@ async function fetchData(url) {
 function Card({ id }) {
   const apiUrl = `https://jar-5pt4zcwc3a-ey.a.run.app/?jar=${id}`
 
+
   const { data, error } = useSWR(apiUrl, fetchData);
 
   if (error) {
@@ -37,15 +38,24 @@ if(id)  return (
         <h3>{data.data.name}</h3>
         <p>{data.data.description}</p>
         <div className="money">
-          <p>
-            Накопичено
-            <br />
-            {data.data.config && data.data.jarGoal}
-          </p>
+        <p>
+        Накопичено
+        <br />
+        {data.data.jarGoal !== undefined
+          ? new Intl.NumberFormat('UAH', {
+              style: 'currency',
+              currency: 'UAH',
+            }).format(data.data.jarGoal)
+          : 'N/A'}
+      </p>
           <p>
             Ціль
             <br />
-            {data.data.config && data.data.jarAmount}
+            {data.data.jarAmount !== undefined ? new Intl.NumberFormat('UAH', {
+              style: 'currency',
+              currency: 'UAH',
+            }).format(data.data.jarAmount)
+          : 'N/A'}
           </p>
         </div>
       </div>
