@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import Card from './Card';
-import './addbanka.css';
+import React, { useState, useEffect } from "react";
+import Cards from "./Cards";
+import "./add.css"
 
 function AddBanka() {
-  const [bankURL, setBankURL] = useState('');
+  const [bankURL, setBankURL] = useState("");
   const [banks, setBanks] = useState([]);
 
   useEffect(() => {
-    const savedBanks = JSON.parse(localStorage.getItem('banks')) || [];
+    const savedBanks = JSON.parse(localStorage.getItem("banks")) || [];
     setBanks(savedBanks);
   }, []);
 
   const addBank = () => {
-    if (bankURL !== '') {
+    if (bankURL !== "") {
       const bankId = bankURL.replace(
-        'https://jar-5pt4zcwc3a-ey.a.run.app/?jar=', ''
+        "https://jar-5pt4zcwc3a-ey.a.run.app/?jar=",
+        ""
       );
 
       const newBank = {
@@ -24,14 +25,14 @@ function AddBanka() {
 
       setBanks((prevBanks) => [...prevBanks, newBank]);
       const updatedBanks = [...banks, newBank];
-      localStorage.setItem('banks', JSON.stringify(updatedBanks));
+      localStorage.setItem("banks", JSON.stringify(updatedBanks));
 
-      setBankURL('');
+      setBankURL("");
     }
-  }
+  };
 
   return (
-    <div className='add'>
+    <div  className="add">
       <h1>Додати банку</h1>
       <input
         type="text"
@@ -40,15 +41,14 @@ function AddBanka() {
         onChange={(e) => setBankURL(e.target.value)}
       />
       <button onClick={addBank}>Додати банку</button>
-      <div className='body'>
+      
+      <div className="body">
         {banks.map((bank, index) => (
-          <div className='cardContainer'>
-            <Card key={index} id={bank.banka} />
-          </div>
+            <Cards key={index} id={bank.banka} />
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default AddBanka;

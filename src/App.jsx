@@ -1,7 +1,7 @@
 import React from 'react'
 import AddBanka from './Components/AddBanka'
 import { SWRConfig } from 'swr';
-import './app.css'
+import "./app.css"
 function App() {
   const swrConfig = {
     refreshInterval: 10 * 60 * 1000,
