@@ -1,42 +1,39 @@
-.money{
-    display: flex;
-    flex-direction: row;
-    background-color: #e9e3e3;
-    border-radius: 20px;
-}
 .card{
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 10px;
+    width: 280px;
+    height: 450px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 15%;
-    border: 1px solid gray ;
-    padding: 10px;
-    border-radius: 20px;
-    margin-top: 40px;
-}
-img {
-    width: 115px;
-    height: 135px;
-}
-.btn{
     text-align: center;
+    margin: 20px;
+}
+img{
+    width: 120px;
+    height: 120px;
+}
+.money{
+    background-color: #e4e2e2;
+    border-radius: 30px;
+    display: flex;
+    padding: 0 auto;
+    font-size: 15px;
+}
+.jarAmount, .jarGoal {
+    padding: 0 5px;
 }
 .btn button{
-    padding: 5px 75px;
-    border-radius: 20px;
+    font-size: 18px;
+    padding: 3px 75px;
+    border-radius:20px;
     border: 1px solid black;
-    cursor: pointer;
     transition: 0.3s;
 }
 .btn button:hover{
     background-color: black;
     color: white;
     border: 1px solid orange;
-
-}
-.jarGoal p, .jarAmount p {
-    font-size: 14px;
-    padding: 0px auto;
-    text-align: center;
 }

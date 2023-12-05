@@ -1,0 +1,13 @@
+.cards{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+  width: 75%;
+  flex-wrap: wrap;
+}
+.body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

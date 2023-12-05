@@ -32,7 +32,8 @@ function AddBanka() {
   };
 
   return (
-    <div  className="add">
+    <div  className="body">
+      <div className="add">
       <h1>Додати банку</h1>
       <input
         type="text"
@@ -41,8 +42,8 @@ function AddBanka() {
         onChange={(e) => setBankURL(e.target.value)}
       />
       <button onClick={addBank}>Додати банку</button>
-      
-      <div className="body">
+      </div>
+      <div className="cards">
         {banks.map((bank, index) => (
             <Cards key={index} id={bank.banka} />
         ))}
