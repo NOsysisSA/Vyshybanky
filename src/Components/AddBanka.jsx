@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
-import Card from "./Card";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Route as ReactRoute,
-  Navigate,
-} from "react-router-dom";
-import "./add.css";
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import "./add.css"
 
 function AddBanka() {
   const [bankURL, setBankURL] = useState("");
@@ -40,34 +33,23 @@ function AddBanka() {
   };
 
   return (
-    <Router>
-      <div className="body">
-        <div className="add">
-          <h1>Додати банку</h1>
-          <input
-            type="text"
-            placeholder="Введіть URL"
-            value={bankURL}
-            onChange={(e) => setBankURL(e.target.value)}
-          />
-          <button onClick={addBank}>Додати банку</button>
-        </div>
-        <Routes>
-          <Route path="/" element={<Navigate to="/cards" />} />
-          <Route
-            path="/cards"
-            element={
-              <div className="cards">
-                {banks.map((bank, index) => (
-                  <Cards key={index} id={bank.banka} />
-                ))}
-              </div>
-            }
-          />
-          <Route path="/cards/:bankId" element={<Card banks={banks} />} />
-        </Routes>
+    <div  className="body">
+      <div className="add">
+      <h1>Додати банку</h1>
+      <input
+        type="text"
+        placeholder="Введіть URL"
+        value={bankURL}
+        onChange={(e) => setBankURL(e.target.value)}
+      />
+      <button onClick={addBank}>Додати банку</button>
       </div>
-    </Router>
+      <div className="cards">
+        {banks.map((bank, index) => (
+            <Cards key={index} id={bank.banka} />
+        ))}
+      </div>
+    </div>
   );
 }
 
