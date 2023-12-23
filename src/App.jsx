@@ -1,5 +1,5 @@
 import React from 'react'
-import AddBanka from './Components/AddBanka'
+import Main from './Components/AddBanka'
 import { SWRConfig } from 'swr';
 import "./app.css"
 function App() {
@@ -10,7 +10,7 @@ function App() {
   return (
     <SWRConfig value={swrConfig}>
     <div className='app'>
-      <AddBanka/> 
+      <Main/> 
     </div>
     </SWRConfig>
   )

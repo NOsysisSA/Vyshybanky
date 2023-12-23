@@ -6,7 +6,7 @@
     height: 450px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     margin: 20px;
@@ -39,4 +39,21 @@ img{
     background-color: black;
     color: white;
     border: 1px solid orange;
+}
+.line{
+    border:1px solid black;
+    width: 100%;
+    padding: 1px;
+    border-radius: 10px;
+    margin: 0;
+
+}
+.res {
+  background-color: black;
+  font-size: 3px;
+  border-radius: 10px;
+  
+}
+.percent {
+  font-size: 14px;
 }
