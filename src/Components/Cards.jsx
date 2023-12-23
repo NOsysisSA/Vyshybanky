@@ -65,7 +65,6 @@ function Cards({ id }) {
             <p>{data.data.ownerName}</p>
             <p>{data.data.description}</p>
             <div className="btn">
-                <button>Поповнити</button>
                 <a href={urlForPay}>Поповнити</a>
             </div>
           </div>

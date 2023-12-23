@@ -25,14 +25,17 @@ img{
 .jarAmount, .jarGoal {
     padding: 0 5px;
 }
-.btn button{
+.btn a{
+    color:black ;
+    outline: none;
+    text-decoration: none;
     font-size: 18px;
     padding: 3px 75px;
     border-radius:20px;
     border: 1px solid black;
     transition: 0.3s;
 }
-.btn button:hover{
+.btn a:hover{
     background-color: black;
     color: white;
     border: 1px solid orange;
