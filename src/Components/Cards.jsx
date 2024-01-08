@@ -16,10 +16,12 @@ async function fetchData(url) {
   }
 }
 
-function Cards({ id }) {
+function Cards({ id, }) {
   const apiUrl = `https://jar-5pt4zcwc3a-ey.a.run.app/?jar=${id}`;
   const urlForPay = `https://send.monobank.ua/jar/${id}`;
   const { data, error } = useSWR(apiUrl, fetchData);
+
+
 
   if (error) {
     return <div>Ошибка загрузки</div>;
@@ -30,11 +32,21 @@ function Cards({ id }) {
 
 
   let percent = Math.floor((data.data.jarAmount / data.data.jarGoal) * 100);
+
+  
+
+  if (percent > 100){
+    percent = 100
+  }
+
   let widthStyle = {
     width: `${percent}%`
   }
+
+
   return (
     <div className="card">
+      <p>{id}</p>
       <img src="https://send.monobank.ua/img/jar/uah_50.png" alt="Банка" />
       <h3>{data.data.name}</h3>
       <div className="percent">{percent}%</div>
