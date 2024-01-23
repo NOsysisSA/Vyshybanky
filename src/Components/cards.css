@@ -1,14 +1,18 @@
+.cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .card{
     border: 1px solid gray;
     border-radius: 20px;
     padding: 10px;
     width: 280px;
-    height: 450px;
+    height: 525px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
+    justify-content: space-evenly;
     margin: 20px;
 }
 img{
@@ -25,35 +29,20 @@ img{
 .jarAmount, .jarGoal {
     padding: 0 5px;
 }
-.btn a{
-    color:black ;
-    outline: none;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 3px 75px;
-    border-radius:20px;
-    border: 1px solid black;
-    transition: 0.3s;
-}
-.btn a:hover{
-    background-color: black;
-    color: white;
-    border: 1px solid orange;
-}
-.line{
-    border:1px solid black;
-    width: 100%;
-    padding: 1px;
-    border-radius: 10px;
-    margin: 0;
 
+.line{
+    width: 100%;
+    height: 3px;
 }
-.res {
-  background-color: black;
-  font-size: 3px;
-  border-radius: 10px;
-  
+
+.res{
+    background-color: black;
+    width: 50%;
+    height: 3px;
 }
-.percent {
-  font-size: 14px;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

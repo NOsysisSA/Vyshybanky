@@ -1,98 +1,77 @@
 import React, { useState, useEffect } from "react";
-import { IoMenuSharp } from "react-icons/io5";
 import Cards from "./Cards";
 import "./add.css";
 
 function AddBanka() {
-  const [bankURL, setBankURL] = useState("");
-  const [banks, setBanks] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);  
+  const [bankId, setBankId] = useState('')
+  const [data, setData] = useState(null)
+  const [banks, setBanks] = useState([])
 
+
+  const apiUrl = `https://jar-5pt4zcwc3a-ey.a.run.app/?jar=${bankId}`;
 
   useEffect(() => {
-    const savedBanks = JSON.parse(localStorage.getItem("banks")) || [];
-    setBanks(savedBanks);
+    const fetchData = async () => {
+      try {
+        const res = await fetch(apiUrl);
+        const responseData = await res.json()
+        setData(responseData);
+      } catch (error) {
+        console.error('Loading error:', error)
+      }
+    }
+
+    if (bankId) {
+      fetchData();
+    }
+  }, [bankId, apiUrl]);
+
+  useEffect(() => {
+
+    const storedBanks = localStorage.getItem("banks");
+    if (storedBanks) {
+      setBanks(JSON.parse(storedBanks));
+    }
   }, []);
 
+  const handleInputChange = (event) => {
+    setBankId(event.target.value)
+  }
+
   const addBank = () => {
-    if (bankURL !== "") {
-      const bankId = bankURL.replace(
-        "https://jar-5pt4zcwc3a-ey.a.run.app/?jar=",
-        ""
-      );
+    if (data && data.data) {
+      let percent = data.data.jarAmount / data.data.jarGoal * 100
+      percent = Math.floor(percent);
 
       const newBank = {
-        banka: bankId,
+        percent: percent,
+        id: bankId,
+        banka: data.data,
         date: Date.now(),
-      };
-      
+      }
 
-      setBanks((prevBanks) => [...prevBanks, newBank]);
+
       const updatedBanks = [...banks, newBank];
       localStorage.setItem("banks", JSON.stringify(updatedBanks));
 
-      setBankURL("");
-      closeModal();
+
+      setBanks(updatedBanks)
+      setBankId('')
     }
-    
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const hendlSortByDateOldtoNew = () => {
-    const sortedData = [...banks].sort((a, b) => b.date - a.date);
-    setBanks(sortedData);
-  };
-
-  const hendlSortByDateNewtoOld = () => {
-    const sortedData = [...banks].sort((a, b) => a.date - b.date);
-    setBanks(sortedData);
-  };
-
-  
+  }
 
   return (
-    <div className="body">
-      <div className="header">
-        <div className="add">
-          <button className="openButton" onClick={openModal}>
-            <IoMenuSharp />
-          </button>
-
-          {isModalOpen && (
-            <div className="addModal">
-              <button className="closeButton" onClick={closeModal}>
-                X
-              </button>
-              <h1>Додати банку</h1>
-              <input
-                type="text"
-                placeholder="Введіть ID банки"
-                value={bankURL}
-                onChange={(e) => setBankURL(e.target.value)}
-              />
-              <button onClick={addBank}>ОК</button>
-            </div>
-          )}
-        </div>
+    <div className="main">
+      <div className="addBanks">
+        <label>Введіть ID </label>
+        <input type="text" value={bankId} onChange={handleInputChange} />
+        <button onClick={addBank}>AddBank</button>
       </div>
-      <div className="sortBar">
-        <button onClick={hendlSortByDateNewtoOld}>Від нових до старих</button>
-        <button onClick={hendlSortByDateOldtoNew}>Від старих до нових</button>
-      </div>
-      <div className="cards">
-        {banks.map((bank, index) => (
-          <Cards  key={index} id={bank.banka} />
-        ))}
+      <div className='cards'>
+        <Cards banks={banks} />
       </div>
     </div>
-  );
+  )
 }
 
 export default AddBanka;
