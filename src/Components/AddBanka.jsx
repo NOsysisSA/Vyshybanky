@@ -72,6 +72,12 @@ function AddBanka() {
     setBanks(sortedData);
   };
 
+  const handleDelete = (bankId) => {
+    const updatedBanks = banks.filter((bank) => bank.id !== bankId);
+    localStorage.setItem("banks", JSON.stringify(updatedBanks));
+    setBanks(updatedBanks);
+  };
+
   return (
     <div className="main">
       <div className="addBanks">
@@ -103,7 +109,7 @@ function AddBanka() {
       )}
 
       <div className="cards">
-        <Cards banks={banks} />
+        <Cards handleDelete={handleDelete} banks={banks} />
       </div>
     </div>
   );

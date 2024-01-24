@@ -1,13 +1,13 @@
 import React from "react";
 import "../Styles/cards.css";
 import Card from "./Card";
-function Cards({ banks }) {
+function Cards({ banks, handleDelete }) {
   return (
     <div className="content">
       <div className="cards">
         {banks.map((bank, index) => (
           <div key={index}>
-            {bank.banka ? <Card bank={bank} /> : <p>Err</p>}
+            {bank.banka ? <Card handleDelete={handleDelete} bank={bank} /> : <p>Err</p>}
           </div>
         ))}
       </div>

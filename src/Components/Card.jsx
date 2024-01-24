@@ -1,6 +1,7 @@
 import React from "react";
-
-function Card({ bank }) {
+import { TiTrash } from "react-icons/ti";
+import "../Styles/card.css"
+function Card({ bank, handleDelete }) {
   return (
     <div className="card">
       <div className="img">
@@ -30,6 +31,9 @@ function Card({ bank }) {
               <p>{bank.banka.ownerName}</p>
             </strong>
             <p className="description">{bank.banka.description}</p>
+          </div>
+          <div>
+          <TiTrash onClick={() => handleDelete(bank.id)} className="deleteButton" />
           </div>
         </>
       ) : (
