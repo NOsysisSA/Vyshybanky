@@ -1,19 +1,16 @@
 import React from "react";
 import "./cards.css";
 function Cards({ banks }) {
+
   return (
     <div className="content">
-      <div className="sortBar">
-        <button>Sort 1</button>
-        <button>Sort 2</button>
-      </div>
-
       <div className="cards">
         {banks.map((bank, index) => (
           <div key={index}>
             {bank.banka ? (
               <div className="card">
                 <div className="img">
+
                   <img
                     src="https://send.monobank.ua/img/jar/uah_50.png"
                     alt="Банка"
@@ -22,8 +19,8 @@ function Cards({ banks }) {
                 <div className="name">
                   <h1>{bank.banka.name}</h1>
                 </div>
-                <div className="line">
-                  <p>{bank.percent}%</p>
+                <p>{bank.percent}%</p>
+                <div className="line">  
                   <div
                     style={{ width: `${bank.percent}%` }}
                     className="res"
@@ -31,10 +28,12 @@ function Cards({ banks }) {
                 </div>
                 <div className="money">
                   <div className="jarAmount">
-                    <p>{bank.banka.jarAmount}</p>
+                    <p>Накопичено</p>
+                    <p>{bank.banka.jarAmount}₴</p>
                   </div>
                   <div className="jarGoal">
-                    <p>{bank.banka.jarGoal}</p>
+                  <p>Мета</p>
+                    <p>{bank.banka.jarGoal}₴</p>
                   </div>
                 </div>
                 <div className="info">

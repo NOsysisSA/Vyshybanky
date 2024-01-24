@@ -59,6 +59,27 @@ function AddBanka() {
       setBankId('')
     }
   }
+  console.log(banks)
+
+  const handleSortByDateOldToNew = () => {
+    const sortedData = [...banks].sort((a,b) => a.date - b.date)
+    setBanks(sortedData)
+  }
+
+  const handleSortByDateNewToOld = () => {
+    const sortedData = [...banks].sort((a,b) => b.date - a.date)
+    setBanks(sortedData)
+  }
+
+  const handleSortByPErcentCleanToFull = () => {
+    const sortedData = [...banks].sort((a,b) => a.percent - b.percent)
+    setBanks(sortedData)
+  }
+
+  const handleSortByPErcentFullToClean = () => {
+    const sortedData = [...banks].sort((a,b) => b.percent - a.percent)
+    setBanks(sortedData)
+  }
 
   return (
     <div className="main">
@@ -66,6 +87,12 @@ function AddBanka() {
         <label>Введіть ID </label>
         <input type="text" value={bankId} onChange={handleInputChange} />
         <button onClick={addBank}>AddBank</button>
+      </div>
+      <div className="sortBat">
+        <button onClick={handleSortByDateNewToOld}>Від нових до старих</button>
+        <button onClick={handleSortByDateOldToNew}>Від старих до нових</button>
+        <button onClick={handleSortByPErcentCleanToFull}>Від порожніх до повних</button>
+        <button onClick={handleSortByPErcentFullToClean}>Від повних до порожніх</button>
       </div>
       <div className='cards'>
         <Cards banks={banks} />
